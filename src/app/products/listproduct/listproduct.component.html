@@ -1,0 +1,61 @@
+<form [formGroup]="productform" (ngSubmit)="onSubmit(productform.value)" class="formcenter">
+  <h2>Product Add Form</h2>
+  <br />
+  <div class="form-group">
+    <label for="productname">Product Name</label>
+    <input type="text" class="form-control" placeholder="Enter product name" formControlName="pname" />
+  </div>
+  <div *ngIf="pname.invalid && (pname.dirty || pname.touched)">
+    <h6>Invalid Product Name</h6>
+  </div>
+
+  <div class=" form-group">
+    <label for="product catagory">Product catagory</label>
+    <input type="text" class="form-control" placeholder="Enter catagory" formControlName="pcatagory" />
+  </div>
+
+  <div class="form-group">
+    <label for="product price">Product Price</label>
+    <input type="text" class="form-control" placeholder="Enter Price" formControlName="pprice" />
+  </div>
+
+  <div class="form-group">
+    <label for="detail">Detail</label>
+    <input type="text" class="form-control" placeholder="Enter detail" formControlName="pdetail" />
+  </div>
+
+  <button type="submit" [disabled]="!productform.valid" routerLinkActive="router-link-active" class="btn btn-primary">
+    {{ isEdit ? "Update" : "Submit" }}
+  </button>
+  <br />
+</form>
+
+<div class="formcenter">
+  <table class="table table-striped ">
+    <thead>
+      <tr>
+        <th>Product Name</th>
+        <th>Product Catagory</th>
+        <th>Product Price</th>
+        <th>Product Detail</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of productlist">
+        <td>{{ item.pname }}</td>
+        <td>{{ item.pcatagory }}</td>
+        <td>{{ item.pprice }}</td>
+        <td>{{ item.pdetail }}</td>
+
+        <td>
+          <button type="submit" (click)="onEdit(item)" class="btn btn-primary">
+            Edit
+          </button>
+          <button type="submit" (click)="onDelete(item)" class="btn btn-primary" style="margin-left:30px;">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,37 @@
+<form [formGroup]="productform" (ngSubmit)="onSubmit(productform.value)" class="formcenter">
+  <h2>User Add Form</h2>
+  <br>
+  <div class="form-group">
+    <label for="Product Name">Product Name</label>
+    <input type="text" class="form-control" placeholder="Enter product name" formControlName="productname">
+  </div>
+  <div *ngIf="productname.invalid &&(productname.dirty || productname.touched)">
+    <h6>Product name is invalid</h6>
+  </div>
+
+  <div class=" form-group">
+    <label for="productcatagory">Product Catagory</label>
+    <input type="text" class="form-control" placeholder="Enter product catagory" formControlName="productcatgory">
+  </div>
+  <div *ngIf="productcatgory.invalid &&(productcatgory.dirty || productcatgory.touched)">
+    <h6>Product Catagory is invalid</h6>
+  </div>
+  <div class="form-group">
+    <label for="productprice">Product Price</label>
+    <input type="text" class="form-control" placeholder="Enter product price" formControlName="productprice">
+  </div>
+  <div *ngIf="productprice.invalid &&(productprice.dirty || productprice.touched)">
+    <h6>product price is invalid</h6>
+  </div>
+  <div class="form-group">
+    <label for="product detail">Product Detail</label>
+    <input type="text" class="form-control" placeholder="Enter Product detail" formControlName="productdetail">
+  </div>
+  <div *ngIf="productdetail.invalid &&(productdetail.dirty || productdetail.touched)">
+    <h6>Product detail is invalid</h6>
+  </div>
+
+
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
